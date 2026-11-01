@@ -1,19 +1,11 @@
 
 import { Routes, Route } from 'react-router';
-
+import NoEncontrado from '../componentes/NoEncontrado';
 import Layout from '../componentes/Layout';
 import App from '../App';
 import DetallePelicula from '../paginas/DetallePelicula';
 import Favoritos from '../paginas/Favoritos';
 
-function NoEncontrado() {
-  return (
-    <main className="app">
-      <h1>Página no encontrada</h1>
-      <p>La página que buscás no existe.</p>
-    </main>
-  );
-}
 
 function AppRoutes() {
   return (

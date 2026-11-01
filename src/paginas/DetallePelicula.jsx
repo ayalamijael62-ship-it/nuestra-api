@@ -1,9 +1,9 @@
-
 import { useParams, useNavigate } from 'react-router';
 
 import { crearUrlDetalle } from '../api/omdb';
 import useFetch from '../hooks/useFetch';
 import { useFavoritosContext } from '../contexto/FavoritosContext';
+import NoEncontrado from '../componentes/NoEncontrado';
 
 function DetallePelicula() {
   const { id } = useParams();
@@ -47,15 +47,21 @@ function DetallePelicula() {
     );
   }
 
-  if (error || !pelicula || pelicula.Response === 'False') {
+  // Error de conexión o petición
+  if (error) {
     return (
       <main className="app">
         <p role="alert">
-          {error || 'No encontramos esa película.'}
+          Ocurrió un error al cargar la película.
         </p>
         <button onClick={() => navegar(-1)}>Volver</button>
       </main>
     );
+  }
+
+  // Película inexistente
+  if (!pelicula || pelicula.Response === 'False') {
+    return <NoEncontrado />;
   }
 
   return (
