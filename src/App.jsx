@@ -61,10 +61,12 @@ function App() {
     setSearchParams(nuevosParametros, { replace: true });
   }, [busqueda, filtro, anio, pagina, setSearchParams]);
 
-  function manejarBusqueda(evento) {
-    evento.preventDefault();
+    function manejarBusqueda(evento, termino = busqueda) {
+    evento?.preventDefault();
+
+    setBusqueda(termino);
     setPagina(1);
-    buscar(busqueda, 1);
+    buscar(termino, 1);
   }
 
   function cambiarPagina(nuevaPagina) {
