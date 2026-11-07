@@ -5,15 +5,18 @@ import { BrowserRouter } from 'react-router';
 
 import AppRoutes from './rutas/AppRoutes';
 import { FavoritosProvider } from './contexto/FavoritosContext';
+import { AuthProvider } from './contexto/AuthContext';
 
 import './index.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <FavoritosProvider>
-        <AppRoutes />
-      </FavoritosProvider>
+      <AuthProvider>
+        <FavoritosProvider>
+            <AppRoutes />
+        </FavoritosProvider>
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>
 );
